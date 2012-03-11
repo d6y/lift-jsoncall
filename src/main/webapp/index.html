@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Home</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default&at=content">
+      <script type="text/javascript">
+        function returnJson() {
+          return [{foo: 123}, {bar: 123}]       
+        }
+      </script>    
+      <div class="lift:JsonCallExample.working">
+        <div id="foobar-working"></div>
+        <button id="button-example-working">Click me and check the log!</button>
+      </div>
+      
+      <div class="lift:JsonCallExample.notworking">
+        <div id="foobar"></div>
+        <button id="button-example">Click me and check the log, but you wont anything!</button>
+      </div>      
+    </div>
+  </body>
+</html>
