@@ -7,6 +7,9 @@ import net.liftweb.http.js.JsCmds
 import net.liftweb.http.js.JE
 import net.liftweb.http.DispatchSnippet
 
+import net.liftweb.json.JsonAST.JValue
+import net.liftweb.http.js.JsCmds
+
 class JsonCallExample extends DispatchSnippet {
  
   def dispatch = {
@@ -15,7 +18,7 @@ class JsonCallExample extends DispatchSnippet {
   }
   
   def workingExample = {
-    val function = SHtml.jsonCall(JsRaw("[1329652277766,1329652277766]"), (s) => println(s))
+    val function = SHtml.jsonCall(JsRaw("[1329652277766,1329652277766]"), (s:JValue) => { println(s); JsCmds.Noop })
     
     "#foobar-working" #> JsCmds.Script(JE.JsRaw("""
         $(function() { $('#button-example-working').bind('click', function() {
@@ -24,7 +27,7 @@ class JsonCallExample extends DispatchSnippet {
   }
   
   def notWorkingExample = {
-    val function = SHtml.jsonCall(JsRaw("[1329652277766,1329652277766.118]"), (s) => println(s))
+    val function = SHtml.jsonCall(JsRaw("[1329652277766,1329652277766.118]"), (s:JValue) => { println(s); JsCmds.Noop })
     
     "#foobar" #> JsCmds.Script(JE.JsRaw("""
         $(function() { $('#button-example').bind('click', function() {
